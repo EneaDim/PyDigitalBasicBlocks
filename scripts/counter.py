@@ -55,7 +55,7 @@ try:
             mystr += '\n'
             mystr += '// COMBO PROCESS\n'
             mystr += 'always_comb begin\n'
-            mystr += '	count_nxt = count\n'
+            mystr += '	count_nxt = count;\n'
             mystr += '	if (enable & ~tc_s)\n'
             mystr += '		count_nxt = count + 1;\n'
             mystr += '	else\n'
@@ -65,7 +65,7 @@ try:
             mystr += '\n'
             mystr += '// TERMINAL COUNT DEFINITION\n'
             mystr += 'always_comb begin\n'
-            mystr += "	if (count == "+str(nbit)+"d'"+str(count)+")\n"
+            mystr += "	if (count == "+str(nbit)+"'d"+str(count)+")\n"
             mystr += '		count_nxt = count + 1;\n'
             mystr += '	else\n'
             mystr += '		count_nxt = 0;\n'
@@ -99,7 +99,7 @@ try:
             mystr += '\n'
             mystr += '// COMBO PROCESS\n'
             mystr += 'always_comb begin\n'
-            mystr += '	count_nxt = count\n'
+            mystr += '	count_nxt = count;\n'
             mystr += '	if (rstns & ~tc_s)\n'
             mystr += '		count_nxt = count + 1;\n'
             mystr += '	else\n'
@@ -108,7 +108,7 @@ try:
             mystr += '\n'
             mystr += '// TERMINAL COUNT DEFINITION\n'
             mystr += 'always_comb begin\n'
-            mystr += "	if (count == "+str(nbit)+"d'"+str(count)+")\n"
+            mystr += "	if (count == "+str(nbit)+"'d"+str(count)+")\n"
             mystr += '		count_nxt = count + 1;\n'
             mystr += '	else\n'
             mystr += '		count_nxt = 0;\n'
@@ -143,7 +143,7 @@ try:
             mystr += '\n'
             mystr += '// COMBO PROCESS\n'
             mystr += 'always_comb begin\n'
-            mystr += '	count_nxt = count\n'
+            mystr += '	count_nxt = count;\n'
             mystr += '	if (rstns & ~tc_s)\n'
             mystr += '	    if (enable)\n'
             mystr += '	        count_nxt = count + 1;\n'
@@ -153,7 +153,7 @@ try:
             mystr += '\n'
             mystr += '// TERMINAL COUNT DEFINITION\n'
             mystr += 'always_comb begin\n'
-            mystr += "	if (count == "+str(nbit)+"d'"+str(count)+")\n"
+            mystr += "	if (count == "+str(nbit)+"'d"+str(count)+")\n"
             mystr += '		count_nxt = count + 1;\n'
             mystr += '	else\n'
             mystr += '		count_nxt = 0;\n'

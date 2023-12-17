@@ -23,6 +23,10 @@ register:
 counter:
 	python3 ./scripts/counter.py -type $(CNT_TYPE) -period $(CNT_PERIOD) -fclk $(CNT_FCLK) -o $(OUTPUT_FOLDER)
 
+# COMPILE
+compile:
+	iverilog -g2012 $(OUTPUT_FOLDER)/*
+
 # HELP
 help_ff:
 	python3 ./scripts/ff.py -h
@@ -33,4 +37,4 @@ help_counter:
 
 # CLEAN
 clean:
-	rm -rf outputs/*
+	rm -rf $(SIM_FOLDER) $(OUTPUT_FOLDER)
