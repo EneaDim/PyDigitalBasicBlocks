@@ -18,11 +18,15 @@ ADD_TYPE?='rca'
 ADD_NBITS?='8'
 # Subtractor
 SUB_NBITS?='8'
+# RAM
+RAM_TYPE?='std'
+RAM_NWORDS?='8'
+RAM_NBITS?='8'
 # Outputs
 OUTPUT_FOLDER?='outputs'
 SIM_FOLDER?='sim'
 
-all: clean setup ff register counter mux decoder ha addsub compile
+all: clean setup ff register counter mux decoder ha addsub ram compile
 # SETUP
 setup:
 	mkdir -p $(SIM_FOLDER) $(OUTPUT_FOLDER)
@@ -45,6 +49,8 @@ adder: fa
 	python3 ./scripts/adder.py -type $(ADD_TYPE) -n_bits $(ADD_NBITS) -o $(OUTPUT_FOLDER)
 addsub: adder
 	python3 ./scripts/addsub.py -n_bits $(SUB_NBITS) -o $(OUTPUT_FOLDER)
+ram: 
+	python3 ./scripts/ram.py -type $(RAM_TYPE) -n_words $(RAM_NWORDS) -n_bits $(RAM_NBITS) -o $(OUTPUT_FOLDER)
 
 # COMPILE
 compile:
@@ -59,6 +65,16 @@ help_counter:
 	python3 ./scripts/counter.py -h
 help_mux:
 	python3 ./scripts/mux.py -h
+help_decoder:
+	python3 ./scripts/decoder.py -h
+help_fa:
+	python3 ./scripts/fa.py -h
+help_ha:
+	python3 ./scripts/ha.py -h
+help_adder:
+	python3 ./scripts/adder.py -h
+help_addsub:
+	python3 ./scripts/addsub.py -h
 
 # CLEAN
 clean:

@@ -31,9 +31,9 @@ try:
     count = math.floor(float(period)*float(fclk)) - 1
     nbit = math.ceil(math.log2(count))
     # Open the file
-    with open(path+'counter_'+period+'us.sv', 'w+') as f:
+    with open(path+'counter'+period+'us.sv', 'w+') as f:
         if cnt_type == 'std':
-            mystr = 'module counter_'+period+'us (\n'
+            mystr = 'module counter'+period+'us (\n'
             mystr += '	input clk,\n'
             mystr += '	input rstn,\n'
             mystr += '	input enable,\n'

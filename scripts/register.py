@@ -25,12 +25,9 @@ try:
     else:
         path = './'
     # Open the file
-    with open(path+'register.sv', 'w+') as f:
+    with open(path+'register'+str(nbit)+'bits.sv', 'w+') as f:
         if reg_type == 'std':
-            mystr = 'module register #(\n'
-            mystr += '	parameter NBIT = '+nbit+',\n'
-            mystr += '	parameter UPPER = NBIT -1\n'
-            mystr += ')(\n'
+            mystr = 'module register'+str(nbit)+'bits #(parameter NBIT = '+nbit+', parameter UPPER = NBIT -1)(\n'
             mystr += '	input clk,\n'
             mystr += '	input rstn,\n'
             mystr += '	input  [UPPER:0] in,\n'
@@ -49,10 +46,7 @@ try:
             mystr += '\n'
             mystr += 'endmodule\n'
         elif reg_type =='with_en':
-            mystr = 'module register #(\n'
-            mystr += '	parameter NBIT = '+nbit+',\n'
-            mystr += '	parameter UPPER = NBIT -1\n'
-            mystr += ')(\n'
+            mystr = 'module register'+str(nbit)+'bits #(parameter NBIT = '+nbit+', parameter UPPER = NBIT -1)(\n'
             mystr += '	input clk,\n'
             mystr += '	input rstn,\n'
             mystr += '	input enable,\n'
@@ -73,10 +67,7 @@ try:
             mystr += '\n'
             mystr += 'endmodule\n'
         elif reg_type =='with_synch_rstn':
-            mystr = 'module register #(\n'
-            mystr += '	parameter NBIT = '+nbit+',\n'
-            mystr += '	parameter UPPER = NBIT -1\n'
-            mystr += ')(\n'
+            mystr = 'module register'+str(nbit)+'bits #(parameter NBIT = '+nbit+', parameter UPPER = NBIT -1)(\n'
             mystr += '	input clk,\n'
             mystr += '	input rstn,\n'
             mystr += '	input rstns,\n'
@@ -99,10 +90,7 @@ try:
             mystr += '\n'
             mystr += 'endmodule\n'
         elif reg_type =='with_en_and_synch_rstn':
-            mystr = 'module register #(\n'
-            mystr += '	parameter NBIT = '+nbit+',\n'
-            mystr += '	parameter UPPER = NBIT -1\n'
-            mystr += ')(\n'
+            mystr = 'module register'+str(nbit)+'bits #(parameter NBIT = '+nbit+', parameter UPPER = NBIT -1)(\n'
             mystr += '	input clk,\n'
             mystr += '	input rstn,\n'
             mystr += '	input enable,\n'
