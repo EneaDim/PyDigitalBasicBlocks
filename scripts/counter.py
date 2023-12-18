@@ -16,7 +16,7 @@ try:
     fclk = args.get("fclk")
     output_folder = args.get("output")
 except Exception as err:
-    print('\033[38;5;208mError during ARGUMENT PARSING:\n\033[0;0m')
+    print('\033[38;5;208mError during ARGUMENT PASSING:\nError Type: '+str(exc_type)+'\nLine number: '+str(exc_traceback.tb_lineno)+'\033[0;0m')
     print(err)
     sys.exit()
 
@@ -29,7 +29,7 @@ try:
         path = './'
     # Calculate number of counts and nbits
     count = math.floor(float(period)*float(fclk)) - 1
-    nbit = math.floor(math.log2(count))
+    nbit = math.ceil(math.log2(count))
     # Open the file
     with open(path+'counter_'+period+'us.sv', 'w+') as f:
         if cnt_type == 'std':
@@ -168,7 +168,8 @@ try:
             raise Exception('\033[38;5;208mCOUNTER type not allowed\033[0;0m')
         f.write(mystr)
 except Exception as err:
-    print('\033[38;5;208mError during CORE CODE:\n\033[0;0m')
+    exc_type, exc_value, exc_traceback = sys.exc_info()
+    print('\033[38;5;208mError during CORE CODE:\nError Type: '+str(exc_type)+'\nLine number: '+str(exc_traceback.tb_lineno)+'\033[0;0m')
     print(err)
     sys.exit()
 

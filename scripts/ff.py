@@ -11,7 +11,7 @@ try:
     ff_type = args.get("type")
     output_folder = args.get("output")
 except Exception as err:
-    print('\033[38;5;208mError during ARGUMENT PARSING:\n\033[0;0m')
+    print('\033[38;5;208mError during ARGUMENT PASSING:\nError Type: '+str(exc_type)+'\nLine number: '+str(exc_traceback.tb_lineno)+'\033[0;0m')
     print(err)
     sys.exit()
 
@@ -145,7 +145,7 @@ try:
             raise Exception('\033[38;5;208mFF type not allowed\033[0;0m')
         f.write(mystr)
 except Exception as err:
-    print('\033[38;5;208mError during CORE CODE:\n\033[0;0m')
+    exc_type, exc_value, exc_traceback = sys.exc_info()
+    print('\033[38;5;208mError during CORE CODE:\nError Type: '+str(exc_type)+'\nLine number: '+str(exc_traceback.tb_lineno)+'\033[0;0m')
     print(err)
     sys.exit()
-
