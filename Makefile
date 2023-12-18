@@ -22,11 +22,15 @@ SUB_NBITS?='8'
 RAM_TYPE?='std'
 RAM_NWORDS?='8'
 RAM_NBITS?='8'
+# FIFO
+FIFO_TYPE?='std'
+FIFO_DEPTH?='8'
+FIFO_NBITS?='8'
 # Outputs
 OUTPUT_FOLDER?='outputs'
 SIM_FOLDER?='sim'
 
-all: clean setup ff register counter mux decoder ha addsub ram compile
+all: clean setup ff register counter mux decoder ha addsub ram fifo compile
 # SETUP
 setup:
 	mkdir -p $(SIM_FOLDER) $(OUTPUT_FOLDER)
@@ -51,6 +55,8 @@ addsub: adder
 	python3 ./scripts/addsub.py -n_bits $(SUB_NBITS) -o $(OUTPUT_FOLDER)
 ram: 
 	python3 ./scripts/ram.py -type $(RAM_TYPE) -n_words $(RAM_NWORDS) -n_bits $(RAM_NBITS) -o $(OUTPUT_FOLDER)
+fifo: 
+	python3 ./scripts/fifo.py -type $(FIFO_TYPE) -n_words $(FIFO_DEPTH) -n_bits $(FIFO_NBITS) -o $(OUTPUT_FOLDER)
 
 # COMPILE
 compile:
